@@ -12,6 +12,7 @@ sudo apt-get install {}
 		->tmux resurrect! *1
 	->neovim
 	->zsh(?)
+	->alacritty
 
 (2) Setting up remote github
 
@@ -19,6 +20,7 @@ Setup ssh agents and stuff
 	->ssh-keygen -t ed25519 -C "chrisssu19@gmail.com"
 	->eval "$(ssh-agent -s)"
 	->add pub key to github acc
+		->cat ~/.ssh/id_ed25519.pub 
 	->ssh -T git@github.com (tests whether it worked or not)
 
 developing for bleu: 
@@ -32,13 +34,22 @@ Might need to install nvm, node
 
 (4) Configs
 
-Setup alacritty + dracula theme(?)
+******Clone my-configs (this repo)
+What's in this repo??
 
-If using zsh, set up ohmyzsh
-
+	->.tmux.conf
+	->
 
 *1:
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
+	$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
+	$ cd my-configs
+	$ cp .tmux.conf ~
+	$ tmux
+	tmux_prefix + I (capital i)
+
+
+	
+
 
 
 
