@@ -15,6 +15,7 @@ sudo apt-get install {}
 	->neovim
 	->zsh(?)
 	->alacritty *2
+	->curl
 
 (2) Setting up remote github
 
