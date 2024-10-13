@@ -33,13 +33,17 @@ developing for bleu:
 
 Might need to install nvm, node
 
-(4) Configs
+(4) Nvim
+
+Follow instructions for kickstarter_modular: https://github.com/nvim-lua/kickstart.nvim?tab=readme-ov-fil
+
+(5) Configs
 
 ******Clone my-configs (this repo)
 What's in this repo??
 
 	->.tmux.conf
-	->.alacritty.toml
+	->alacritty.toml
 
 *1:
 	$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
