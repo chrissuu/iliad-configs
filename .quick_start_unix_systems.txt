@@ -6,7 +6,7 @@ Must install the following:
 
 sudo apt-get install {}
 	->build-essential
-	->gh
+	->gh 
 	->git *3
 	->tmux
 		->tmux resurrect! *1
@@ -22,6 +22,7 @@ Setup ssh agents and stuff
 	->add pub key to github acc
 		->cat ~/.ssh/id_ed25519.pub 
 	->ssh -T git@github.com (tests whether it worked or not)
+	->gh auth login
 
 developing for bleu: 
 	->setup ruby (rbenv, jekyll)
@@ -58,3 +59,4 @@ What's in this repo??
 *3
 	$ git config --global user.name="Chris Su"
 	$ git config --global user.email="chrisssu19@gmail.com"
+
