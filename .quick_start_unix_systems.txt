@@ -1,0 +1,44 @@
+In linux, (mostly) all the software I need is available through sudo apt-get install
+
+Must install the following:
+
+(1) Installing Software
+
+sudo apt-get install {}
+	->build-essential
+	->gh
+	->git
+	->tmux
+		->tmux resurrect! *1
+	->neovim
+	->zsh(?)
+
+(2) Setting up remote github
+
+Setup ssh agents and stuff
+	->ssh-keygen -t ed25519 -C "chrisssu19@gmail.com"
+	->eval "$(ssh-agent -s)"
+	->add pub key to github acc
+	->ssh -T git@github.com (tests whether it worked or not)
+
+developing for bleu: 
+	->setup ruby (rbenv, jekyll)
+	->gem install jekyll
+	->gem install bundle (sometimes)
+
+(3) Language Support
+
+Might need to install nvm, node
+
+(4) Configs
+
+Setup alacritty + dracula theme(?)
+
+If using zsh, set up ohmyzsh
+
+
+*1:
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
+
+
+
