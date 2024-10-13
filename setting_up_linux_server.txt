@@ -1,0 +1,94 @@
+----Setting Up a Linux Server----
+
+Since the process was rather tedious, here's some documentation for what I did to set a remote linux server, Odyssey on my home pc. 
+
+The main idea is that with port forwarding, you can set up a server which you can ssh into from anywhere.
+
+I am running Ubuntu 24.04.1, LTS (The full machine info is available in machines_info.txt, under Odyssey)
+
+My router model is from Verizon
+
+Steps:
+
+(1) Setting a static IP address for your machine 
+
+This is necessary because the local ip (IPv4 (?)) can often change and when it does, you won't be able to ssh into your machine.
+
+    ->Settings > Network > Wired > Gear Box > IPv4
+        *Under this section, click "Manual"
+        *DNS, Routes can stay Automatic
+        *Enter an IP address that you want
+            -> Tip*** Run "$ ip addr" in your shell first and get your IPv4 and use that address (don't wanna screw other ip 
+               addresses over that might be used was my reasoning - not sure if it matters tho)
+    ->Netmask: use the netmask under ip addr.
+
+The ip address you are looking for when you run "$ ip addr" is under inet, under wlp5s0 for internet or enp4s0 for ethernet
+
+(2)  Setting up port forwarding
+
+Log into your router by going to (usually) 196.82.0.1 or 196.82.1.1, and looking 
+at the back of your router (usually) for the password.
+
+Look for a tab that says "Port Forwarding" when you log into your router, and add a new "Rule"
+
+(At least that was what it was for Verizon)
+
+You'll be met with a "Create Rule" form with the following parameters:
+    (1) Application
+        -> Name of the application / rule. In my case, I put something like "Odyssey-SSH"
+
+    (2) Original Port
+        -> 22 is the default for SSH (look into sshd_config for that, if the parameter 
+           "Port xxxx" is highlighted, (i.e., # is prepended) then your port is probably 22). 
+           Alternatively, you can run "$ sudo systemctl status ssh" and see what port it is listening on.
+
+    (3) Protocol
+        -> TCP, this I searched up, I don't think you have to worry too much about what it does, just use TCP
+
+    (4) Fwd to addr
+        -> Here, put the static IP you set your server to be
+
+    (5) Fwd to port
+        -> Here, use a different port number, I recommend 2222 since anything below 1000(?) is reserved (sometimes)
+           This is for some extra security.
+
+    (6) Schedule
+        -> Always
+
+(3) Firewall
+
+We need to make sure that the firewall allows certain connections. In particular, I added 22/tcp and 2222/tcp
+
+For Ubuntu, this entails running:
+
+    $ sudo ufw allow 22/tcp
+    $ sudo ufw allow 2222/tcp
+
+(4) Security Features
+
+We're going to set up passphrase instead of password log in. This is arguably safer, and recommended.
+
+    -> $ ssh-keygen
+    -> choose location you want
+    -> ssh-copy-id <user>@<public_ip> -p <port you choose in 2.5>
+        This copies your public key into the server, allowing you to connect
+    -> use the password to log in
+
+Now, hopefully rsa key was successfully set up.
+
+Nvim / nano / vim / vi into /etc/ssh/sshd_config and uncomment the line (and change no to yes as necessary):
+
+    PubKeyAuthentication yes
+    AuthorizedKeyFile
+    PasswordAuthentication no
+
+----Troubleshooting tips----
+Try restarting your server, restarting ssh, and resetting firewall if things don't work. 
+
+$ sudo systemctl status ssh
+
+Returns ssh status
+
+$ sudo systemctl restart ssh
+
+Restarts ssh server

@@ -1,3 +1,5 @@
+----Quick Start----
+
 In linux, (mostly) all the software I need is available through sudo apt-get install
 
 Must install the following:
@@ -78,7 +80,6 @@ What's in this repo??
 -----Misc. Software-----
 
 NVIDIA CUDA SETUP
-My home PC server has an Nvidia RTX 3060 Ti, which is CUDA capable, running Ubuntu 24.04, with an x86-64 arch
 
 Following the instructions from Nvidia Cuda Toolkit:
 
