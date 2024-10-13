@@ -17,50 +17,81 @@ sudo apt-get install {}
 (2) Setting up remote github
 
 Setup ssh agents and stuff
-	->ssh-keygen -t ed25519 -C "chrisssu19@gmail.com"
-	->eval "$(ssh-agent -s)"
+	->$ ssh-keygen -t ed25519 -C "chrisssu19@gmail.com"
+	->$ eval "$(ssh-agent -s)"
 	->add pub key to github acc
 		->cat ~/.ssh/id_ed25519.pub 
-	->ssh -T git@github.com (tests whether it worked or not)
-	->gh auth login
+	->$ ssh -T git@github.com (tests whether it worked or not)
+	->$ gh auth login
+
+	->$ git config --global user.name="Chris Su"
+	->$ git config --global user.email="chrisssu19@gmail.com"
+
+(3) Language Support
+
+Might need to install nvm, node
+Rbenv
 
 developing for bleu: 
 	->setup ruby (rbenv, jekyll)
 	->gem install jekyll
 	->gem install bundle (sometimes)
 
-(3) Language Support
-
-Might need to install nvm, node
-
 (4) Nvim
 
 Follow instructions for kickstarter_modular: https://github.com/nvim-lua/kickstart.nvim?tab=readme-ov-fil
 
-(5) Configs
+Then, copy in relevant configurations from nvim lua configs folder in this repo
 
-******Clone my-configs (this repo)
-What's in this repo??
+(5) Tmux
 
-	->.tmux.conf
-	->alacritty.toml
+After sudo apt-get install tmux, need to install tmux plugin manager (tpm)
 
-*1:
+The tmux-resurrect is already imported in the .tmux.conf file, so only need to fetch
+
 	$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
 	$ cd my-configs
 	$ cp .tmux.conf ~
 	$ tmux
 	tmux_prefix + I (capital i)
 
-*2
+(6) Alacritty
+
+Clones the alacritty themes github so that you have the themes locally.
+
+Move the alacritty.toml into the alacritty folder created by the github clone
 	$ mkdir -p ~/.config/alacritty/themes
 	$ git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes 
 	$ cd ~/Desktop/my-configs
 	$ cp alacritty.toml ~/.config/alacritty
 
+(7) Configs
+
+******Clone my-configs (this repo)
+What's in this repo??
+
+	->.tmux.conf
+	->alacritty.toml
+	->nvim configs in lua
 
 
-*3
-	$ git config --global user.name="Chris Su"
-	$ git config --global user.email="chrisssu19@gmail.com"
+-----Misc. Software-----
 
+NVIDIA CUDA SETUP
+My home PC server has an Nvidia RTX 3060 Ti, which is CUDA capable, running Ubuntu 24.04, with an x86-64 arch
+
+Following the instructions from Nvidia Cuda Toolkit:
+
+->Verify system has CUDA-capable GPU (this can be looked up in a table from Nvidia)
+->Verify system is running a supported version of Linux (most are supported?)
+->Verify gcc installed: sudo apt-get install basic-essential does this(?)
+->Download the NVIDIA CUDA Toolkit (just follow instructions on (https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=24.04&target_type=deb_network)
+->Then run:
+	$ sudo apt-get update
+	$ sudo apt-get install cuda-toolkit
+	$ suda apt-get install nvidia-gds
+	$ sudo reboot
+	$ DO post install available here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions
+	$ clone https://github.com/nvidia/cuda-samples
+	$ cd into Samples/Utilies_1 or something like that, then cd into deviceQuery and make
+	$ Run ./devicequery or the like and make sure it outputs your gpu info / PASSES
