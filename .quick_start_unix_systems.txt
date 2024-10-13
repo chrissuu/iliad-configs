@@ -7,12 +7,12 @@ Must install the following:
 sudo apt-get install {}
 	->build-essential
 	->gh
-	->git
+	->git *3
 	->tmux
 		->tmux resurrect! *1
 	->neovim
 	->zsh(?)
-	->alacritty
+	->alacritty *2
 
 (2) Setting up remote github
 
@@ -38,7 +38,7 @@ Might need to install nvm, node
 What's in this repo??
 
 	->.tmux.conf
-	->
+	->.alacritty.toml
 
 *1:
 	$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
@@ -47,9 +47,14 @@ What's in this repo??
 	$ tmux
 	tmux_prefix + I (capital i)
 
+*2
+	$ mkdir -p ~/.config/alacritty/themes
+	$ git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes 
+	$ cd ~/Desktop/my-configs
+	$ cp alacritty.toml ~/.config/alacritty
 
-	
 
 
-
-
+*3
+	$ git config --global user.name="Chris Su"
+	$ git config --global user.email="chrisssu19@gmail.com"
