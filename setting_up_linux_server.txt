@@ -14,7 +14,7 @@ Steps:
 
 This is necessary because the local ip (IPv4 (?)) can often change and when it does, you won't be able to ssh into your machine.
 
-    ->Settings > Network > Wired > Gear Box > IPv4
+    ->Settings > Network > Wired (FOR ETHERNET) > Gear Box > IPv4
         *Under this section, click "Manual"
         *DNS, Routes can stay Automatic
         *Enter an IP address that you want
