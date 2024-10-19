@@ -12,7 +12,9 @@ Steps:
 
 (1) Setting a static IP address for your machine 
 
-This is necessary because the local ip (IPv4 (?)) can often change and when it does, you won't be able to ssh into your machine.
+This is necessary because the local ip (IPv4 (?)) can often change and when it does, you won't be able to ssh into your machine (without changing some stuff on your router)
+
+Chances are, when you're ssh'ing into your machine over the internet, you probably won't have access to your router.
 
     ->Settings > Network > Wired (FOR ETHERNET) > Gear Box > IPv4
         *Under this section, click "Manual"
@@ -20,9 +22,9 @@ This is necessary because the local ip (IPv4 (?)) can often change and when it d
         *Enter an IP address that you want
             -> Tip*** Run "$ ip addr" in your shell first and get your IPv4 and use that address (don't wanna screw other ip 
                addresses over that might be used was my reasoning - not sure if it matters tho)
-    ->Netmask: use the netmask under ip addr.
+    ->Netmask: use the netmask under ip addr. (Mine was 24, which is, I believe, equivalent to 255.255.255.0)
 
-The ip address you are looking for when you run "$ ip addr" is under inet, under wlp5s0 for internet or enp4s0 for ethernet
+The ip address you are looking for when you run "$ ip addr" is under inet, under wlp5s0 for internet or enp4s0 for ethernet (at least for my Ubuntu version)
 
 (2)  Setting up port forwarding
 
@@ -50,14 +52,14 @@ You'll be met with a "Create Rule" form with the following parameters:
 
     (5) Fwd to port
         -> Here, use a different port number, I recommend 2222 since anything below 1000(?) is reserved (sometimes)
-           This is for some extra security.
+           This is for some extra security. (Read somewhere that malicious agents may be listening over port 22)
 
     (6) Schedule
         -> Always
 
 (3) Firewall
 
-We need to make sure that the firewall allows certain connections. In particular, I added 22/tcp and 2222/tcp
+We need to make sure that the firewall allows certain connections. In particular, I added 22/tcp and 2222/tcp. Take this with a grain of salt, but *I think* that port 22 is used when ssh'ing locally over LAN and then port 2222 is used (since you set up port forwarding) when ssh'ing over the internet. Either way, if something doesn't work, just make sure both of these are active(?)
 
 For Ubuntu, this entails running:
 
@@ -66,13 +68,14 @@ For Ubuntu, this entails running:
 
 (4) Security Features
 
-We're going to set up passphrase instead of password log in. This is arguably safer, and recommended.
+We're going to set up passphrase instead of password log in. This is arguably safer, and recommended. The reason this is safer is because when you (or someone else) tries ssh'ing into the machine, it checks whether you have the public key in your ssh configs and then basically doesn't let you even try to ssh into the machine (via some password) without it. 
 
     -> $ ssh-keygen
     -> choose location you want
     -> ssh-copy-id <user>@<public_ip> -p <port you choose in 2.5>
         This copies your public key into the server, allowing you to connect
     -> use the password to log in
+    -> ALTERNATIVELY: you can keep password auth enabled, ssh into your server, then copy the public key into your server, and then disable password auth (next section)
 
 Now, hopefully rsa key was successfully set up.
 
