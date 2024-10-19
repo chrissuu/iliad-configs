@@ -85,6 +85,14 @@ Nvim / nano / vim / vi into /etc/ssh/sshd_config and uncomment the line (and cha
     AuthorizedKeyFile
     PasswordAuthentication no
 
+----Optional Stuff----
+
+(1) Setting up logs to monitor ssh login attempts
+
+(2) Setting up an alias
+    -> You can set up an alias under your local machine's ssh configs (~/.ssh/config I think) so that it's easier for you to ssh into it without having to type your ip address out everytime
+
+(3) Setting up an account system so others (friends) can ssh into your machine 
 ----Troubleshooting tips----
 Try restarting your server, restarting ssh, and resetting firewall if things don't work. 
 
