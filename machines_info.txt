@@ -3,6 +3,7 @@
 OS: Ubuntu 24.04.1 LTS (Dual-Booted, Windows, 250GB Partition, Linux Default Boot)
 Hardware: Gigabyte Ltd. B560 DS3H-AC-Y1
 Processor: 11th Gen Intel Core i5-11600KF, 12 Core
+GPU: NVIDIA GeForce RTX 3060
 Memory: 32 GiB
 Disk Capacity: 1.0 TB
 
