@@ -1,6 +1,6 @@
 ----Quick Start----
 
-In linux, (mostly) all the software I need is available through sudo apt-get install
+In linux, (mostly) all the software I need is available through sudo apt-get install. On Mac, however, I have a passionate dislike / eternal unluckiness with Homebrew (Brew), so I stick with MacPorts. 
 
 Must install the following:
 
@@ -16,6 +16,7 @@ sudo apt-get install {}
 	->zsh(?)
 	->alacritty *2
 	->curl
+	->tldr (pretty useful, IMO)
 
 (2) Setting up remote github
 
