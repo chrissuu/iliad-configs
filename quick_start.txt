@@ -22,12 +22,15 @@ sudo apt-get install {}
 
 Setup ssh agents and stuff
 	->$ ssh-keygen -t ed25519 -C "chrisssu19@gmail.com"
+		-> this will ask for a folder to put it in; the default is best so press enter
+		-> it will then ask for a password, i.e., a password to access your ssh keys. YES password = More secure, NO password = More convenient
 	->$ eval "$(ssh-agent -s)"
-	->add pub key to github acc
-		->cat ~/.ssh/id_ed25519.pub 
+	->run $ cat ~/.ssh/id_ed25519.pub, copy the output
+	->paste the output to github account on github.com, where you add ssh keys	
 	->$ ssh -T git@github.com (tests whether it worked or not)
 	->$ gh auth login
 
+Making sure that you're committing with a username and email you want it under
 	->$ git config --global user.name="Chris Su"
 	->$ git config --global user.email="chrisssu19@gmail.com"
 
