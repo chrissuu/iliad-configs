@@ -31,8 +31,8 @@ Setup ssh agents and stuff
 	->$ gh auth login
 
 Making sure that you're committing with a username and email you want it under
-	->$ git config --global user.name="Chris Su"
-	->$ git config --global user.email="chrisssu19@gmail.com"
+	->$ git config --global user.name "Chris Su"
+	->$ git config --global user.email "chrisssu19@gmail.com"
 
 (3) Language Support
 
@@ -57,7 +57,7 @@ After sudo apt-get install tmux, need to install tmux plugin manager (tpm)
 The tmux-resurrect is already imported in the .tmux.conf file, so only need to fetch
 
 	$ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/
-	$ cd my-configs
+	$ cd iliad-configs
 	$ cp .tmux.conf ~
 	$ tmux
 	tmux_prefix + I (capital i)
@@ -69,12 +69,12 @@ Clones the alacritty themes github so that you have the themes locally.
 Move the alacritty.toml into the alacritty folder created by the github clone
 	$ mkdir -p ~/.config/alacritty/themes
 	$ git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes 
-	$ cd ~/Desktop/my-configs
+	$ cd ~/Desktop/iliad-configs
 	$ cp alacritty.toml ~/.config/alacritty
 
 (7) Configs
 
-******Clone my-configs (this repo)
+******Clone iliad-configs (this repo)
 What's in this repo??
 
 	->.tmux.conf
